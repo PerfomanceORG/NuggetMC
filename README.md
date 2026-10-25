@@ -1,122 +1,53 @@
-<div align="center">
+# NuggetMC
 
-# Pumpkin
+**A Minecraft server core written in Rust.**
 
-![CI](https://github.com/Pumpkin-MC/Pumpkin/actions/workflows/rust.yml/badge.svg)
-[![Discord](https://img.shields.io/discord/1268592337445978193.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/wT8XjrjKkf)
-[![License: GPL](https://img.shields.io/badge/License-GPLv3-yellow.svg)](https://opensource.org/licenses/gpl-3-0)
+[![Rust](https://img.shields.io/badge/language-Rust-orange?logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/status-in%20development-yellow.svg)](#project-status)
 
-</div>
+NuggetMC is an independent server-core project based on [PumpkinMC](https://github.com/Pumpkin-MC/Pumpkin). This repository is focused on the software itself: its implementation, architecture, Minecraft compatibility, and measured performance.
 
-[Pumpkin](https://pumpkinmc.org/) is a Minecraft server built entirely in Rust, offering a fast, efficient,
-and customizable experience. It prioritizes performance and player enjoyment while adhering to the core mechanics of the game.
-<div align="center">
+NuggetMC is server software. It is not a Minecraft server network, client, or preconfigured server pack.
 
-![Pumpkin Chunk Loading](./assets/pumpkin-chunk-loading.webp)
+## Project direction
 
-</div>
+- **Measure, then report.** Performance claims should be backed by repeatable benchmarks and a clear test setup.
+- **Track compatibility.** Document supported Minecraft versions, implemented behavior, and known differences.
+- **Develop deliberately.** Keep changes reviewable and record the reasoning behind project-specific decisions.
+- **Publish progress clearly.** Distinguish implemented features from ideas and future work.
 
-## Goals
+These are project goals, not claims that the work is complete.
 
-- **Performance**: Leveraging multi-threading for maximum speed and efficiency.
-- **Compatibility**: Supports the latest Java & Bedrock Minecraft server version while adhering to Vanilla game mechanics.
-- **Security**: Prioritizes security by preventing known security exploits.
-- **Flexibility**: Highly configurable, with the ability to disable unnecessary features.
-- **Extensibility**: Provides a foundation for plugin development.
+## Project status
 
-> [!IMPORTANT]
-> Pumpkin is currently under heavy development.
->
-> [See what needs to be done before the 1.0.0 Release](https://github.com/Pumpkin-MC/Pumpkin/issues/449)
+The source tree is published, but NuggetMC remains in early development and is **not ready for production use**. There is no stable release yet. Compatibility coverage and performance results will be published after they have been verified.
 
-## Features
+Build and run instructions will be added after the workflow has been checked against this repository.
 
-- [x] Configuration (toml)
-- [Tracking: Protocol](https://github.com/Pumpkin-MC/Pumpkin/issues/1401)
-  - [x] Server Status/Ping
-  - [x] Encryption
-  - [x] Packet Compression
-  - [x] Java Edition
-  - [x] Bedrock Edition (W.I.P)
-  - ...
-- [Tracking: World](https://github.com/Pumpkin-MC/Pumpkin/issues/1403)
-  - [x] Player Tab-list
-  - [x] Scoreboard
-  - [x] World Loading
-  - [x] World Time
-  - [x] World Borders
-  - [x] World Saving
-  - [x] Lighting
-  - [x] Entity Spawning
-  - [x] Bossbar
-  - [x] Chunk Loading (Vanilla, Linear, Pump)
-  - [Chunk Generation](https://github.com/Pumpkin-MC/Pumpkin/issues/36)
-  - [x] Chunk Saving (Vanilla, Linear, Pump)
-  - [Redstone](https://github.com/Pumpkin-MC/Pumpkin/issues/1402)
-  - [x] Liquid Physics
-  - ...
-- [Tracking: Player](https://github.com/Pumpkin-MC/Pumpkin/issues/1405)
-  - [x] Skins
-  - [x] Teleport
-  - [x] Movement
-  - [x] Animation
-  - [x] Inventory
-  - [Combat](https://github.com/Pumpkin-MC/Pumpkin/issues/1404)
-  - [x] Experience
-  - [x] Hunger
-  - [X] Off Hand
-  - [X] Advancements (W.I.P)
-  - [x] Eating
-  - ...
-- Entities
-  - [x] Non-Living (Minecart, Eggs...) (W.I.P)
-  - [x] Entity Effects
-  - [x] Players
-  - [x] Mobs (W.I.P)
-  - [x] Animals (W.I.P)
-  - [Entity AI](https://github.com/Pumpkin-MC/Pumpkin/issues/1406)
-  - [x] Boss (W.I.P)
-  - [x] Villagers (W.I.P)
-  - [X] Entity Saving
-- Server
-  - [Plugins](https://github.com/Pumpkin-MC/Pumpkin/issues/1407)
-  - [x] Query
-  - [x] [Minecraft Server Management Protocol (MSMP)](https://minecraft.wiki/w/Minecraft_Server_Management_Protocol)
-  - [x] Inventories
-  - [x] Particles
-  - [x] Chat
-  - [Commands](https://github.com/Pumpkin-MC/Pumpkin/issues/15)
-  - [x] Permissions
-  - [x] Translations
-- Proxy
-  - [x] [BungeeCord](https://github.com/SpigotMC/BungeeCord)
-  - [x] [BungeeGuard](https://github.com/lucko/BungeeGuard)
-  - [x] [Velocity](https://github.com/PaperMC/Velocity)
+## Current codebase
 
-<!-- Check out our [Github Project](https://github.com/orgs/Pumpkin-MC/projects/3) to see current progress. -->
+The initial source snapshot is based on [PumpkinMC commit 224f9f8](https://github.com/Pumpkin-MC/Pumpkin/commit/224f9f8). Project-specific changes are developed in this repository and should be documented as they are introduced.
 
-## How to run
+## Development priorities
 
-See our [Quick Start](https://docs.pumpkinmc.org/#quick-start) guide to get Pumpkin running.
+1. Maintain a reproducible source build.
+2. Establish automated checks for changes.
+3. Publish a Minecraft-version compatibility matrix.
+4. Create repeatable performance benchmarks and report their methodology and results.
 
-## Contributions
+## Upstream project
 
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md)
+NuggetMC builds on the work of the [PumpkinMC maintainers and contributors](https://github.com/Pumpkin-MC/Pumpkin). NuggetMC is an independent project and is not affiliated with or endorsed by the PumpkinMC team.
 
-## Docs
+## Contributing
 
-Pumpkin's documentation can be found at <https://pumpkinmc.org/>
+Use [GitHub Issues](https://github.com/PerfomanceORG/NuggetMC/issues) to report bugs, ask questions, or suggest improvements. Include the Minecraft version, relevant logs, and steps to reproduce when applicable.
 
-## Communication
+Project-specific contribution instructions will be published as the development workflow is established.
 
-Consider joining [our Discord server](https://discord.gg/wT8XjrjKkf) to stay up-to-date on events, updates, and connect with other members.
+## License and notices
 
-## Funding
+The server code is distributed under the [GNU General Public License v3.0](LICENSE). Some components and bundled data may carry separate license or attribution notices; retain and review those notices when redistributing them.
 
-If you want to fund me and help the project, check out the [Donation Page](https://pumpkinmc.org/donate/).
-
-## License & Attribution
-
-* **Pumpkin Server**: Licensed under the [GNU General Public License v3.0 (GPLv3)](LICENSE).
-* **Plugin API (`pumpkin-plugin-api` & `pumpkin-plugin-wit`)**: Dual-licensed under [MIT](crates/pumpkin-plugin-api/LICENSE-MIT) OR [Apache-2.0](crates/pumpkin-plugin-api/LICENSE-APACHE) for maximum flexibility when writing plugins.
-* **Third-Party Assets & Data**: Bedrock mappings, protocol conversion data, and Minecraft assets are subject to their respective licenses and attribution terms. See [assets/NOTICE.md](assets/NOTICE.md) for full details.
+Minecraft is a trademark of Microsoft Corporation. NuggetMC is an independent community project and is not affiliated with or endorsed by Microsoft or Mojang Studios.
