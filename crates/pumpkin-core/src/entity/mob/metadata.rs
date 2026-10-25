@@ -150,17 +150,25 @@ impl MobMetadata {
         self
     }
 
-    /// Sets the collar color for tamed mobs (wolves, cats).
+    /// Sets the collar color metadata for a wolf.
     #[must_use]
-    pub fn collar_color(mut self, color: DyeColor) -> Self {
+    pub fn collar_color(self, color: DyeColor) -> Self {
+        self.collar_color_with_java_field(tracked_data::wolf::COLLAR_COLOR, color)
+    }
+
+    /// Sets the collar color metadata for a cat.
+    #[must_use]
+    pub fn cat_collar_color(self, color: DyeColor) -> Self {
+        self.collar_color_with_java_field(tracked_data::cat::CAT_COLLAR_COLOR, color)
+    }
+
+    fn collar_color_with_java_field(mut self, tracked: TrackedData, color: DyeColor) -> Self {
         self.bedrock_data.set(
             entity_data_key::COLOR_INDEX,
             MetadataValue::Byte(color.id() as i8),
         );
-        self.java_entries.push(JavaMetadataEntry::VarInt(
-            tracked_data::wolf::COLLAR_COLOR,
-            color.id() as i32,
-        ));
+        self.java_entries
+            .push(JavaMetadataEntry::VarInt(tracked, color.id() as i32));
         self
     }
 
@@ -446,6 +454,16 @@ impl MobMetadata {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn cat_collar_color_uses_cat_tracked_field() {
+        let java = MobMetadata::new()
+            .cat_collar_color(DyeColor::Red)
+            .to_java_spawn_metadata(JavaMinecraftVersion::V_26_3)
+            .expect("java metadata");
+
+        assert_eq!(java[0], tracked_data::cat::CAT_COLLAR_COLOR.id.0);
+    }
 
     #[test]
     fn baby_metadata_generation() {

@@ -266,7 +266,7 @@ impl Mob for CatEntity {
         if self.is_in_sitting_pose() {
             meta = meta.sitting(true);
         }
-        meta = meta.collar_color(pumpkin_data::dye_color::DyeColor::from(
+        meta = meta.cat_collar_color(pumpkin_data::dye_color::DyeColor::from(
             self.collar_color.load(Ordering::Relaxed),
         ));
         Some(meta)
